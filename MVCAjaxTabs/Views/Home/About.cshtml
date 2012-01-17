@@ -1,10 +1,37 @@
 ﻿@{
-    ViewBag.Title = "About Us";
+	ViewBag.Title = "About Us";
 }
 
 <h2>About</h2>
 <p>
-     Put content here.
+	 Put content here.
 </p>
-
-@Html.Action(MVC.Home.AboutTabOne())
+ 
+<div id="tab-costing" class="tabs-content2">
+	<ul class="tabs js-tabs same-height">
+		<li class="current"><a href="#sub-tab-one" title="Overview">Overview</a></li>
+		<li><a href="#sub-tab-two" title="Property">Property</a></li>
+	</ul>
+	<div class="tabs-content">
+		<div class="tab-content-container">
+			<!-- Overview sub TAB -->
+			<div id="sub-tab-one">
+				<div class="infos">
+					<h3>Costing Overview</h3>
+					<p>An overview of costs associated with this claim.</p>
+					@Html.Action(MVC.Home.AboutTabOne())
+                    @Html.RenderTabCallbackAction("sub-tab-one", MVC.Home.AboutTabOne())
+				</div>              
+			</div> 
+			<!-- Property sub TAB -->
+			<div id="sub-tab-property">
+				<div class="infos">
+					<h3>Property Information</h3>
+					<p>The risk address property details are shown below.</p>
+				</div>
+				@Html.Action(MVC.Home.AboutTabOne())
+                @Html.RenderTabCallbackAction("sub-tab-two", MVC.Home.AboutTabOne())
+			</div>
+		</div>
+	</div>
+</div>
